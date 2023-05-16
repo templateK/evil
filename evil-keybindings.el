@@ -54,6 +54,16 @@
   "?" 'dictionary-help        ; "h"
   "C-o" 'dictionary-previous) ; "l"
 
+;;; Magit With-editor
+(eval-after-load 'with-editor
+  '(progn
+     (defvar with-editor-mode-map)
+     (evil-make-overriding-map with-editor-mode-map '(normal insert motion))
+     (evil-define-key '(normal insert motion) with-editor-mode-map
+       "\C-c\C-c" 'with-editor-finish
+       "\C-c\C-k" 'with-editor-cancel
+       )))
+
 ;;; Dired
 
 (eval-after-load 'dired
