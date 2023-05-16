@@ -64,6 +64,16 @@
        "\C-c\C-k" 'with-editor-cancel
        )))
 
+;;; Git-commit
+(eval-after-load 'git-commit
+  '(progn
+     (defvar git-commit-mode-map)
+     (evil-make-overriding-map git-commit-mode-map '(normal insert motion))
+     (evil-define-key '(normal insert motion) git-commit-mode-map
+       "\C-h" 'git-commit-next-message
+       "\C-s" 'git-commit-prev-message
+       )))
+
 ;;; Dired
 
 (eval-after-load 'dired
