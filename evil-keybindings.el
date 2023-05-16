@@ -62,9 +62,27 @@
      (defvar dired-mode-map)
      (evil-make-overriding-map dired-mode-map 'normal)
      (evil-add-hjkl-bindings dired-mode-map 'normal
+       "i" 'dired-previous-line
+       "n" 'dired-next-line
+       "r" 'dired-up-directory
+       "a" 'dired-maybe-insert-subdir
+       "l" 'dired-find-file
+       "\S-l" 'dired-find-file-other-window
+       "H" 'dired-copy-filename-as-kill
+       "h" (lambda () (interactive) (dired-copy-filename-as-kill 0))
+       "b" (lambda () (interactive) (kill-new default-directory) (message "%s" default-directory))
+       "t" 'dired-unmark
+       "T" 'dired-unmark-all-marks
+       "," 'dired-toggle-marks
+       "\S-c" 'dired-do-copy
+       "e" (lambda () (interactive) (quit-window t))
+       "k" 'dired-do-kill-lines
+       "K" (lambda () (interactive) (dired-do-kill-lines '(4)))
+       "g" 'revert-buffer
+       "." 'evil-ex
        "J" 'dired-goto-file                   ; "j"
-       "K" 'dired-do-kill-lines               ; "k"
-       "r" 'dired-do-redisplay                ; "l"
+       "k" 'dired-do-kill-lines               ; "k"
+       ;; "r" 'dired-do-redisplay                ; "l"
        ;; ":d", ":v", ":s", ":e"
        ";" (lookup-key dired-mode-map ":"))))
 
